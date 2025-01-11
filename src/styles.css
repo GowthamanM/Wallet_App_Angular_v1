@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Set overflow on the body or specific containers where you want scrolling */
+  body {
+    overflow: auto; /* or scroll, if you want a scrollbar always visible */
+  }
