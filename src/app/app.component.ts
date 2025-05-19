@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { APP_INITIALIZER, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { WalletComponent } from './home/wallet/wallet.component';
-
 
 @Component({
   selector: 'app-root',
@@ -12,5 +11,5 @@ import { WalletComponent } from './home/wallet/wallet.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Wallet_App_Angular_v1';
+  title = 'Wallet App';
 }
