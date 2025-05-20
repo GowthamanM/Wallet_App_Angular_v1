@@ -1,0 +1,31 @@
+<div class="section mt-4">
+  <div class="section-heading">
+    <h2 class="title">Transactions</h2>
+    <a href="crypto-transactions.html" class="link">View All</a>
+  </div>
+  <div class="card">
+    <ul
+      class="listview flush transparent no-line image-listview detailed-list mt-1 mb-1"
+    >
+      <!-- item -->
+      <li *ngFor="let item of expenseData">
+        <a href="#" class="item">
+          <div class="icon-box" [ngClass]="item.type === 'expense' ? 'bg-danger' : 'bg-success'">
+            <i class="fa" [ngClass]="item.type === 'expense' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
+          </div>
+          <div class="in">
+            <div>
+              <strong>{{item.summary}}</strong>
+              <div class="text-small text-secondary">{{item.accountName}}</div>
+            </div>
+            <div class="text-end">
+              <strong>{{ formatCurrency(item.amount) }}</strong>
+              <div class="text-small">{{ item.timeInMillis | date:'medium' }}</div>
+            </div>
+          </div>
+        </a>
+      </li>
+      <!-- * item -->
+    </ul>
+  </div>
+</div>

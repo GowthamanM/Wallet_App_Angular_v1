@@ -9,7 +9,7 @@
       class="listview flush transparent no-line image-listview detailed-list mt-1 mb-1"
     >
       <!-- item -->
-      <li *ngFor="let item of data | keyvalue">
+      <li *ngFor="let item of accountData">
         <div class="item">
           <div class="icon-box text-success">
             <!-- <ion-icon name="trending-up-outline"></ion-icon> -->
@@ -17,11 +17,11 @@
           <div class="in">
             <div class="text-start">
               <!-- <span><img src="src/assets/img/icon/144x144.png"></span> -->
-              <strong>{{item.value.name}}</strong>
-              <div class="text-small text-secondary">{{item.key}}</div>
+              <strong>{{item.name}}</strong>
+              <div class="text-small text-secondary">{{item.id}}</div>
             </div>
             <div class="text-end">
-              <strong>₹ {{item.value.balance}}</strong>
+              <strong>{{ formatCurrency(item.balance)}}</strong>
               <!-- <div class="text-small">
                 <span class="badge badge-success">
                   <ion-icon name="arrow-up-outline"></ion-icon>

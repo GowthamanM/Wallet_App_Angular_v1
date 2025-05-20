@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AccountsService } from '../../services/accounts.service';
 
 @Component({
   selector: 'app-wallet',
@@ -7,27 +8,17 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
   templateUrl: './wallet.component.html',
   styleUrls: ['./wallet.component.scss']
 })
-export class WalletComponent  implements OnInit {
+export class WalletComponent  implements OnChanges {
 
-  private accountsUrl = 'https://expence-tracker-3ad40-default-rtdb.firebaseio.com/accounts.json';
+  @Input() accountData: any[] = [];
+  @Input() totalBalance:any=0;
 
-  accountData: any[] = [];
-  totalBalance:any=0;
+  constructor(private http : HttpClient, private accountService:AccountsService) { }
 
-  constructor(private http : HttpClient) { }
-
-  ngOnInit() {
-    this.http.get<any[]>(this.accountsUrl).subscribe({
-      next: (response) => {
-        this.accountData = response;
-        console.log( response);
-        this.totalBalance = Object.values(this.accountData).reduce((sum, account) => sum + account.balance, 0);
-      },
-      error: (error) => {
-        console.error(error);
-      }
-    });
-    
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['accountData']) {
+      console.log('Account data updated:', this.accountData);
+    }
   }
 
   formatCurrency(amount: number, locale: string = 'en-IN', currency: string = 'INR'): string {

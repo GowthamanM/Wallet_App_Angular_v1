@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { HomeComponent } from '../home.component';
+
 @Component({
   selector: 'app-account',
   standalone:true,
@@ -9,29 +10,28 @@ import { HomeComponent } from '../home.component';
   styleUrls: ['./account.component.scss'],
   imports:[CommonModule, HttpClientModule, HomeComponent]
 })
-export class AccountComponent  implements OnInit {
+export class AccountComponent  implements OnChanges {
 
-  data: any[] = [];
+  @Input() accountData: any[] = [];
 
-  private apiUrl = 'https://expence-tracker-3ad40-default-rtdb.firebaseio.com/accounts.json';
 
   constructor(private http : HttpClient) { }
 
-  ngOnInit() {
-    this.http.get<any[]>(this.apiUrl).subscribe({
-      next: (response) => {
-        this.data = response;
-        console.log(response);
-        // console.log(this.configService.baseUrl);
-      },
-      error: (error) => {
-        console.error(error);
-      }
-    });
+  ngOnChanges(changes: SimpleChanges) {
+    
   }
+  
 
   getKeys(obj: any): string[] {
     return Object.keys(obj);
+  }
+
+  formatCurrency(amount: number, locale: string = 'en-IN', currency: string = 'INR'): string {
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency,
+      minimumFractionDigits: 2
+    }).format(amount);
   }
 
 }
