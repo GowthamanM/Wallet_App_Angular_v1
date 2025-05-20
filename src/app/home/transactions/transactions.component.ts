@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class TransactionsComponent  implements OnInit {
 
   expenseData:any[]=[];
+  recentTransactions:any[]=[];
 
   constructor(private transactionsService : TransactionsService) { }
 
@@ -21,8 +22,10 @@ export class TransactionsComponent  implements OnInit {
         id,
         ...acc
       }));
-      console.log(this.expenseData);
+      this.recentTransactions = this.expenseData.sort((a, b) => b.timeInMillis - a.timeInMillis).slice(0,5);
     });
+
+    
   }
 
   formatCurrency(amount: number, locale: string = 'en-IN', currency: string = 'INR'): string {

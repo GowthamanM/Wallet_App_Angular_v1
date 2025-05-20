@@ -8,7 +8,7 @@
       class="listview flush transparent no-line image-listview detailed-list mt-1 mb-1"
     >
       <!-- item -->
-      <li *ngFor="let item of expenseData">
+      <li *ngFor="let item of recentTransactions">
         <a href="#" class="item">
           <div class="icon-box" [ngClass]="item.type === 'expense' ? 'bg-danger' : 'bg-success'">
             <i class="fa" [ngClass]="item.type === 'expense' ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
