@@ -12,6 +12,8 @@
       <li *ngFor="let item of accountData">
         <div class="item">
           <div class="icon-box text-success">
+            <img [src]="item.imageUrl">
+            <!-- <img src="/assets/img/icon/PSP.png"> -->
             <!-- <ion-icon name="trending-up-outline"></ion-icon> -->
           </div>
           <div class="in">
@@ -21,7 +23,7 @@
               <div class="text-small text-secondary">{{item.id}}</div>
             </div>
             <div class="text-end">
-              <strong>{{ formatCurrency(item.balance)}}</strong>
+              <strong>{{ formatCurrency(item.balance  )}}</strong>
               <!-- <div class="text-small">
                 <span class="badge badge-success">
                   <ion-icon name="arrow-up-outline"></ion-icon>

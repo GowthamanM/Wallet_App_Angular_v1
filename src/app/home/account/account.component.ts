@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { HomeComponent } from '../home.component';
 
 @Component({
   selector: 'app-account',
   standalone:true,
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss'],
-  imports:[CommonModule, HttpClientModule, HomeComponent]
+  imports:[CommonModule]
 })
 export class AccountComponent  implements OnChanges {
 
